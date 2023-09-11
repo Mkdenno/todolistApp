@@ -3,18 +3,20 @@ import {
 } from '@reduxjs/toolkit'
 const TODO_LIST_KEY = "todolist"
 
+const isWindowDefined = typeof window !== "undefined";
+
+
 const getInitialToDos = () => {
 
-    const localList = window.localStorage.getItem(TODO_LIST_KEY);
+    if (isWindowDefined) {
+        const localList = window.localStorage.getItem(TODO_LIST_KEY);
 
-    if (localList) {
+        if (localList) {
 
-        return JSON.parse(localList);
-
+            return JSON.parse(localList);
+        }
+        window.localStorage.setItem(TODO_LIST_KEY, JSON.stringify([]));
     }
-
-    window.localStorage.setItem(TODO_LIST_KEY, JSON.stringify([]));
-
     return [];
 
 };
@@ -22,8 +24,8 @@ const getInitialToDos = () => {
 const initialState = {
 
     todoList: getInitialToDos(),
-   
-   };
+
+};
 
 const todoSlice = createSlice({
     name: 'todo',
@@ -58,11 +60,31 @@ const todoSlice = createSlice({
             }
         },
         toggleComplete: (state, action) => {
-            const index = state.findIndex((todo) => todo.id === action.payload.id);
-            state[index].completed = action.payload.completed
+            const todoList = window.localStorage.getItem(TODO_LIST_KEY);
+
+            if (todoList) {
+
+                const todoListArr = JSON.parse(todoList);
+
+                todoListArr.forEach((todo, index) => {
+
+                    if (todo.id === action.payload.id) {
+
+                        todo.title = action.payload.title;
+
+                        todo.completed = action.payload.completed;
+
+                    }
+
+                });
+
+                window.localStorage.setItem(TODO_LIST_KEY, JSON.stringify(todoListArr));
+
+                state.todoList = todoListArr;
+
+            }
         },
         deleteTodo: (state, action) => {
-            //    return state.filter((todo)=> todo.id !==action.payload.id)
             const todoList = window.localStorage.getItem(TODO_LIST_KEY);
 
             if (todoList) {

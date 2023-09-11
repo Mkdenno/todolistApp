@@ -1,5 +1,6 @@
 
 'use client'
+
 import React from 'react';
 import {useDispatch} from 'react-redux'
 import { toggleComplete,deleteTodo } from '@/redux/todoSlice';
@@ -18,7 +19,8 @@ const TodoItem = ({ id, title, completed }) => {
     const handlecompleteClick=()=>{
         dispatch(toggleComplete({
             id: id,
-            completed: !completed
+            completed: !completed,
+            title:title
         }))
     }
 	return (
@@ -29,8 +31,8 @@ const TodoItem = ({ id, title, completed }) => {
 
     <tbody>
       <tr className="m-4 bg-base-200">
-        <td className=''><input type='checkbox' className='mr-3' onChange={handlecompleteClick}></input></td>
-        <td>{title}</td>
+        <td className=''><input type='checkbox' className='mr-3' checked={completed} onChange={handlecompleteClick}></input></td>
+        <td className='"w-full"'>{title}</td>
         <td><button onClick={handleDeleteTodo}> <FiTrash2 cursor="pointer" className="text-red-500"  /></button></td>
       </tr>
 

@@ -19,7 +19,8 @@ const Modal= ({modalOpen,setModalOpen}) => {
 
         dispatch(addTodo({
           id:uuidv4(),
-            title:value
+            title:value,
+            completed:false
         }))
         setModalOpen(false)
         setValue("")
