@@ -71,6 +71,7 @@ const todoSlice = createSlice({
                     if (todo.id === action.payload.id) {
 
                         todo.title = action.payload.title;
+                        todo.date = action.payload.date;
 
                         todo.completed = action.payload.completed;
 

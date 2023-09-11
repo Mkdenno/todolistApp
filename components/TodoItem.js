@@ -7,7 +7,7 @@ import { toggleComplete,deleteTodo } from '@/redux/todoSlice';
 import { FiTrash2 } from "react-icons/fi";
 
 
-const TodoItem = ({ id, title, completed }) => {
+const TodoItem = ({ id, title, completed,date }) => {
     const dispatch=useDispatch();
 
     const handleDeleteTodo=()=>{
@@ -20,20 +20,25 @@ const TodoItem = ({ id, title, completed }) => {
         dispatch(toggleComplete({
             id: id,
             completed: !completed,
-            title:title
+            title:title,
+            date:date
         }))
     }
 	return (
 
 
-        <div className="m-5">
+        <div className="m-5 bg-base-200">
 
-      <tr className=" bg-base-200">
-        <td className="w-full">{title}</td>
-        <td className="flex gap-5">
-        <input type='checkbox' className="checkbox"  checked={completed} onChange={handlecompleteClick} size={20}/>
+      <tr className=" p-10 ">
+        <td className="   w-full">
+        <input type='checkbox' className="mr-2 checkbox"  checked={completed} onChange={handlecompleteClick} size={20}/>
+          <span>{title}</span><br/><br/>
+          <span className="ml-2 font-bold text-red-500 ">{date}</span>
+          
+          </td>
+        <td className="">
         <FiTrash2 onClick={handleDeleteTodo} cursor="pointer" className="text-red-500" size={20} />
-           </td>
+        </td>
       </tr>
 </div>
 
