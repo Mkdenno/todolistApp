@@ -24,7 +24,7 @@ A user can aslo delete a task when he/she no longer needs it.
 
 ## Live Link
 
--[Click this link to view the live application]  (https://todolist-or1e9vno1-mkdenno.vercel.app/)
+-[Click this link to view the live application]  (https://todolist-app-brown-tau.vercel.app/)
 
 ## LICENSE
 
