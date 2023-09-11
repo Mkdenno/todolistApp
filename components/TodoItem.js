@@ -26,19 +26,15 @@ const TodoItem = ({ id, title, completed }) => {
 	return (
 
 
-        <div className="overflow-x-auto">
-  <table className="table">
+        <div className="m-5">
 
-    <tbody>
-      <tr className="m-4 bg-base-200">
-        <td className=''><input type='checkbox' className='mr-3' checked={completed} onChange={handlecompleteClick}></input></td>
-        <td className='"w-full"'>{title}</td>
-        <td><button onClick={handleDeleteTodo}> <FiTrash2 cursor="pointer" className="text-red-500"  /></button></td>
+      <tr className=" bg-base-200">
+        <td className="w-full">{title}</td>
+        <td className="flex gap-5">
+        <input type='checkbox' className="checkbox"  checked={completed} onChange={handlecompleteClick} size={20}/>
+        <FiTrash2 onClick={handleDeleteTodo} cursor="pointer" className="text-red-500" size={20} />
+           </td>
       </tr>
-
-
-    </tbody>
-  </table>
 </div>
 
         

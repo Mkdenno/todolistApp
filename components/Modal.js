@@ -35,12 +35,11 @@ const Modal= ({modalOpen,setModalOpen}) => {
       <div className='modal-action'>
       <input
     type='text'
-    className='form-control mb-2 mr-sm-2'
-    placeholder='Add todo...'
+    className="input input-bordered w-full"    placeholder='Add todo...'
     value={value}
     onChange={(event) => setValue(event.target.value)}></input>
 
-<button type='submit' className='btn btn-primary mb-2'>
+<button type='submit' className='btn'>
     Submit
 </button>
       </div>
