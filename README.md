@@ -16,7 +16,7 @@ A user can aslo delete a task when he/she no longer needs it.
 
 
 ## Installation Process
--Clone to this repo : git clone https://github.com/Mkdenno/restaurant-app
+-Clone to this repo : git clone https://github.com/Mkdenno/todolistApp
 
 -Unzip the downloaded files in a folder of choice.
 
